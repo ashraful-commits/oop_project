@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.css"/>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+   
+    <title>OOP CURD</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 my-5">
+           
+            <div class="card shadow bg-dark">
+                <div class="card-header bg-primary d-flex justify-content-between">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add New Student</button>
+                    <h1 class="text-white">All Students</h1>
+                </div>
+                <div class="card-body text-white">
+                  <table class="table table-hover table_data text-white ">
+                    <thead class="text-center">
+                      <tr class="text-warning text-uppercase">
+                        <th class="" >Roll</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Call</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="output d-felx align-items-center"></tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- modal -->
+<!-- Button trigger modal -->
+  <!--add student Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Student Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card shadow">
+                <div class="card-header text-center  bg-primary">
+                    <h4 class="text-white d-inline-block">Add new Student</h4>
+                    
+                </div>
+                <div class="card-body">
+                    <div class="msg"></div>
+                    <form id="student_form" method="post" action="">
+                        <div class="my-1">
+                            <label for="">Name</label>
+                            <input class="form-control" type="text" name="name" id="">
+                        </div>
+                        <div class="my-1">
+                            <label for="">Email</label>
+                            <input class="form-control" type="email" name="email" id="">
+                        </div>
+                        <div class="my-1">
+                            <label for="">Age</label>
+                            <input class="form-control" type="text" name="age" id="">
+                        </div>
+                        <div class="my-1">
+                            <label for="">Mobile</label>
+                            <input class="form-control" type="text" name="cell" id="">
+                        </div>
+                        <div class="my-1">
+                            <label for="">Photo</label>
+                            <input class="form-control" type="text" name="photo" id="">
+                        </div>
+                        <button class="w-100 btn btn-primary text-uppercase  text-white" type="submit" >Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+  <!--edit Modal -->
+  <div class="modal fade" id="edit_form_model" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Edit Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card shadow">
+                <div class="card-header text-center bg-primary">
+                    <h4 class="text-white d-inline-block">Edit Student Data</h4>                   
+                </div>
+                <div class="card-body">
+                  <div class="msg"></div>
+                    <form id="edit_form" method="post" action="">
+                      
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- view Modal -->
+  <div class="modal fade" id="view_form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">View Student</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card shadow">
+                <div class="card-header text-center bg-primary">
+                    <h4 class="text-white">Student Datials</h4>
+                    
+                </div>
+                <div class="card-body">
+                   <div class="view_data text-center"></div>
+                </div>
+            </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script>
+    <script type="module" src="../src/app.js"></script>
+    
+  <script>
+    $('.table_data').DataTable();
+     </script>
+   
+</body>
+</html>
